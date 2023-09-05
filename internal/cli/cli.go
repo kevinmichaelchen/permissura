@@ -20,6 +20,7 @@ var rootCmd = &cobra.Command{
 }
 
 var (
+	ldFlags       LDFlags
 	endpoint      string
 	project       string
 	dir           string
@@ -29,8 +30,17 @@ var (
 	dryRun        bool
 )
 
+// LDFlags contain fields that get linked and compiled into the final binary
+// program at build time.
+type LDFlags struct {
+	Version string
+	Commit  string
+	Date    string
+}
+
 func init() {
 	rootCmd.AddCommand(syncCmd)
+	rootCmd.AddCommand(versionCmd)
 
 	wd, err := os.Getwd()
 	if err != nil {
@@ -48,7 +58,8 @@ func init() {
 	rootCmd.PersistentFlags().BoolVarP(&dryRun, "dry-run", "", false, "dry run")
 }
 
-func Main() {
+func Main(ldf LDFlags) {
+	ldFlags = ldf
 	if err := rootCmd.Execute(); err != nil {
 		log.Error("execution failed", "err", err)
 		os.Exit(1)
