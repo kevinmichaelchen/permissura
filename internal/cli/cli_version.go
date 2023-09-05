@@ -13,5 +13,5 @@ var versionCmd = &cobra.Command{
 }
 
 func fnVersion(cmd *cobra.Command, args []string) {
-	fmt.Printf("version %s", ldFlags.Version)
+	fmt.Printf("version %s\n", ldFlags.Version)
 }
