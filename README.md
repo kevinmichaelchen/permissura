@@ -1,5 +1,9 @@
 # permissura
 
+[![GoReportCard example](https://goreportcard.com/badge/github.com/kevinmichaelchen/permissura)](https://goreportcard.com/report/github.com/kevinmichaelchen/permissura)
+[![version](https://img.shields.io/github/v/release/kevinmichaelchen/permissura?include_prereleases&label=latest&logo=ferrari)](https://github.com/kevinmichaelchen/permissura/releases/latest)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/kevinmichaelchen/permissura)](https://codeclimate.com/github/kevinmichaelchen/permissura)
+
 An opinionated (and slightly better way) to manage your Hasura permissions.
 
 By managing your permisions rules externally, you jail-break it and gain new
