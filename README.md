@@ -20,7 +20,15 @@ go install github.com/kevinmichaelchen/permissura@latest
 
 ```shell
 docker pull ghcr.io/kevinmichaelchen/permissura
-docker run ghcr.io/kevinmichaelchen/permissura --help
+docker run --rm ghcr.io/kevinmichaelchen/permissura --help
+
+docker run --rm \
+  -v $(pwd)/examples/policies:/policies \
+  ghcr.io/kevinmichaelchen/permissura \
+  --default-source default \
+  --dir /policies \
+  --debug \
+  sync
 ```
 
 ### Writing your permissions rules
