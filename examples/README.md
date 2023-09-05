@@ -14,6 +14,38 @@ A small example to generate realistic Hasura schemas.
 
 <img src="./diagrams/erd.svg" width="500" />
 
+## Verifying Permissions
+
+To verify the permissions work as intended, follow the instructions in
+[`seed.md`](./seed.md).
+
+Then, using the following headers:
+
+```
+x-hasura-role: employee
+x-hasura-user-id: 6db66e81-aaf4-4c0d-beaa-020ec8da720d
+```
+
+run the following query:
+
+```graphql
+query GetFlight {
+  flight: flightsByPk(id: "49f4cc96-5c07-462b-ac5b-b32ba89efe3d") {
+    id
+  }
+}
+```
+
+You'll notice the data coming back as `null`, since that employee never flew on
+that particular flight.
+
+However, if we change up the user to one that was on that particular flight, we
+actually get results back:
+
+```
+x-hasura-user-id: 1c5bcc1a-94fb-4521-b371-51e74c254a40
+```
+
 ## Tasks
 
 ### start
