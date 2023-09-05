@@ -1,0 +1,16 @@
+table:
+  name: flight_staff
+  schema: public
+object_relationships:
+  - name: employee
+    using:
+      manual_configuration:
+        column_mapping:
+          employee_id: id
+        insertion_order: null
+        remote_table:
+          name: employees
+          schema: public
+  - name: staffRole
+    using:
+      foreign_key_constraint_on: role

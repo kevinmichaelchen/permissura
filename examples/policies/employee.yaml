@@ -1,0 +1,41 @@
+rules:
+  - name: employee_flights_select
+
+    # A simple comment that describes the rule.
+    # This gets stored in Hasura.
+    description: Can an employee view a Flight?
+
+    # A longer-form, human-readable business rule
+    # describing the logic in greater detail.
+    # This won't get stored in Hasura, but it's
+    # useful for non-technical stakeholders.
+    rule: |-
+      A pilot, co-pilot, or flight attendant can view a Flight if and only if
+      they were on that particular flight.
+
+    # Hasura Data Source override.
+    # This overrides the --default-source flag.
+    source: default
+
+    # The principal/subject.
+    role: employee
+
+    # The action.
+    type: select
+
+    # The object.
+    # The thing they're trying to read or write.
+    table:
+      schema: public
+      name: flights
+
+    # The actual logic that powers the permissions rule.
+    # Hasura will use this logic to filter out any resources
+    # the principal shouldn't be able to view, or to prevent
+    # any updates that they shouldnt' be allowed to perform.
+    permission:
+      columns: "*"
+      filter:
+        staff:
+          employee_id:
+            $eq: "X-HASURA-USER-ID"
