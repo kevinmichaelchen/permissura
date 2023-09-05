@@ -66,8 +66,8 @@ these features vastly improve readability.
 
 ### How can I view my rules when they have anchors in them?
 
-Sometimes when your YAML is really DRY and you've got anchors, it can be hard
-to fully read your permissions logic.
+Sometimes when your YAML is really DRY and you've got anchors, it can be hard to
+fully read your permissions logic.
 
 You can "explode" the anchors using [`yq`][yq], [`yj`][yj], and [`jq`][jq]:
 
