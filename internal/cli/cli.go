@@ -7,9 +7,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "permissions",
-	Short: "Utility for managing Hasura permissions rules",
-	Long:  `Utility for managing Hasura permissions rules`,
+	Use:   "permissura",
+	Short: "Utility for managing Hasura permission rules",
+	Long:  `Utility for managing Hasura permission rules`,
 	Run: func(cmd *cobra.Command, args []string) {
 	},
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
