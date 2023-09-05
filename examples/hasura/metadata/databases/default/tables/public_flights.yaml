@@ -24,3 +24,12 @@ array_relationships:
         remote_table:
           name: flight_staff
           schema: public
+select_permissions:
+  - role: employee
+    permission:
+      columns: '*'
+      filter:
+        staff:
+          employee_id:
+            $eq: X-HASURA-USER-ID
+    comment: Can an employee view a Flight?
