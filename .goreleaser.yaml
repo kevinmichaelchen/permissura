@@ -11,6 +11,17 @@ builds:
     binary: permissura
     main: ./cmd/permissura
 
+kos:
+  - repository: ghcr.io/kevinmichaelchen/permissura
+    tags:
+      - '{{.Version}}'
+      - latest
+    bare: true
+    preserve_import_paths: false
+    platforms:
+      - linux/amd64
+      - linux/arm64
+
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of uname.
