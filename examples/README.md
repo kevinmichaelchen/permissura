@@ -65,6 +65,15 @@ hasura --project hasura \
   console
 ```
 
+### export
+
+Export Hasura metadata after syncing it.
+
+```shell
+hasura --project hasura \
+  metadata export
+```
+
 ### migrate_format
 
 Format migrations.

@@ -42,6 +42,14 @@ permissura \
   sync
 ```
 
+Don't forget to [export][export] your metadata after you sync it. This is
+necessary since the Hasura GraphQL Engine [does not have
+access][gh-issue-md-fs-access] to your local filesystem.
+
+[gh-issue-md-fs-access]: https://github.com/hasura/graphql-engine/issues/8272
+[export]:
+  https://hasura.io/docs/latest/hasura-cli/commands/hasura_metadata_export/
+
 ## FAQ
 
 ### How does it work?
