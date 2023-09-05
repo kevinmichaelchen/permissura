@@ -10,8 +10,17 @@ whatever directory structure suits you; etc.
 
 ### Installing `permissura`
 
+#### With `go install`
+
 ```shell
 go install github.com/kevinmichaelchen/permissura@latest
+```
+
+#### With Docker
+
+```shell
+docker pull ghcr.io/kevinmichaelchen/permissura
+docker run ghcr.io/kevinmichaelchen/permissura --help
 ```
 
 ### Writing your permissions rules
