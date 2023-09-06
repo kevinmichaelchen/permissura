@@ -27,6 +27,7 @@ docker pull ghcr.io/kevinmichaelchen/permissura
 docker run --rm ghcr.io/kevinmichaelchen/permissura --help
 
 docker run --rm \
+  --network host \
   -v $(pwd)/examples/policies:/policies \
   ghcr.io/kevinmichaelchen/permissura \
   --default-source default \
