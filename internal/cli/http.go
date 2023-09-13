@@ -67,7 +67,10 @@ func executeRequest(payload any, operationName string, logErrors bool) error {
 	}
 
 	if logErrors && response.Code != "" {
-		log.Errorf("Received %s error for path (%s): %s", response.Code, response.Path, response.Error)
+		log.Errorf(
+			"Operation %s failed: Received %s error for path (%s): %s",
+			operationName, response.Code, response.Path, response.Error,
+		)
 	}
 
 	return nil
