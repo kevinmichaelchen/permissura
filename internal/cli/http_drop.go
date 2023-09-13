@@ -1,6 +1,9 @@
 package cli
 
-import "github.com/charmbracelet/log"
+import (
+	"fmt"
+	"github.com/charmbracelet/log"
+)
 
 type DropPermissionRequest struct {
 	Type string `json:"type"`
@@ -31,7 +34,10 @@ func dropPermission(typeStr string, table TableName, role, source string) {
 		}),
 	}
 
-	err := executeRequest(r)
+	err := executeRequest(r,
+		fmt.Sprintf("drop-%s-%s-%s", source, table, role),
+		false,
+	)
 
 	// idempotence means not aborting if the permission has already been dropped
 	if err != nil {

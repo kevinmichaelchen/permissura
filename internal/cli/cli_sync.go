@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"fmt"
 	"github.com/charmbracelet/log"
 	"github.com/spf13/cobra"
 )
@@ -38,7 +39,10 @@ func fnSync(cmd *cobra.Command, args []string) {
 			}
 
 			req := buildNewSelectPermissions(table, source, rule)
-			err := executeRequest(req)
+			err := executeRequest(req,
+				fmt.Sprintf("create-%s-%s-%s", source, table, rule.Role),
+				true,
+			)
 			if err != nil {
 				log.Fatal("unable to create select rule", "err", err)
 			}

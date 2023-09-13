@@ -14,7 +14,14 @@ type TableName struct {
 	Schema string `json:"schema"`
 }
 
-func executeRequest(payload any) error {
+type Response struct {
+	Error   string `json:"error"`
+	Path    string `json:"path"`
+	Code    string `json:"code"`
+	Message string `json:"message"`
+}
+
+func executeRequest(payload any, operationName string, logErrors bool) error {
 	client := &http.Client{}
 
 	body, err := json.Marshal(payload)
@@ -48,6 +55,20 @@ func executeRequest(payload any) error {
 	}
 
 	log.Debug("received response", "body", string(resb))
+
+	var response Response
+	err = json.Unmarshal(resb, &response)
+	if err != nil {
+		return fmt.Errorf("unable to unmarshal response body: %w", err)
+	}
+
+	if response.Message == "success" {
+		log.Info("Successfully executed operation", "operation", operationName)
+	}
+
+	if logErrors && response.Code != "" {
+		log.Errorf("Received %s error for path (%s): %s", response.Code, response.Path, response.Error)
+	}
 
 	return nil
 }
