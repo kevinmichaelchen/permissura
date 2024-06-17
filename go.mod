@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/charmbracelet/log v0.4.0
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 	gopkg.in/yaml.v3 v3.0.1
 )
 
